@@ -3,10 +3,10 @@ require("../controller/Les.php");
 
 $id = $_GET["id"];
 
-$query = Index("SELECT * FROM alternatif WHERE id_les = $id");
+$query = Index("SELECT * FROM alternatif WHERE id_ = $id");
 foreach ($query as $row) {
     $row["kode_alternatif"];
-    $row["nm_les"];
+    $row["nm_guru"];
 }
 
 if (isset($_POST["add"])) {
@@ -64,7 +64,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Kode Alternatif</label>
                                     <div class="control has-icons-left">
-                                        <input type="hidden" value="<?= $row["id_les"]; ?>" name="id_les">
+                                        <input type="hidden" value="<?= $row["id_guru"]; ?>" name="id_guru">
                                         <input class="input" type="text" placeholder="Nama Tempat Les" name="kode_alternatif" value="<?= $row["kode_alternatif"] ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="qr-code"></ion-icon>
@@ -74,7 +74,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Nama Alternatif</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="nm_les" value="<?= $row["nm_les"]; ?>">
+                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="nm_guru" value="<?= $row["nm_guru"]; ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="home"></ion-icon>
                                         </span>

@@ -30,7 +30,7 @@ $data = Index("SELECT * FROM alternatif LIMIT $awal,$halaman");
                                         <tr>
                                             <th class="has-text-white">No</th>
                                             <th class="has-text-white">Kode Alternatif</th>
-                                            <th class="has-text-white">Nama Tempat Les</th>
+                                            <th class="has-text-white">Nama Guru</th>
                                             <th class="has-text-white">Aksi</th>
                                         </tr>
                                     </thead>
@@ -38,7 +38,7 @@ $data = Index("SELECT * FROM alternatif LIMIT $awal,$halaman");
                                         <tr>
                                             <th class="has-text-white">No</th>
                                             <th class="has-text-white">Kode Alternatif</th>
-                                            <th class="has-text-white">Nama Tempat Les</th>
+                                            <th class="has-text-white">Nama Guru</th>
                                             <th class="has-text-white">Aksi</th>
                                         </tr>
                                     </tfoot>
@@ -48,10 +48,10 @@ $data = Index("SELECT * FROM alternatif LIMIT $awal,$halaman");
                                             <tr>
                                                 <th><?= $i ?></th>
                                                 <td><?= $row["kode_alternatif"] ?></td>
-                                                <td><?= $row["nm_les"] ?></td>
+                                                <td><?= $row["nm_guru"] ?></td>
                                                 <td>
                                                     <div class="buttons">
-                                                        <a class="button is-link" href="index.php?halaman=editdatales&id=<?= $row['id_les']; ?>">
+                                                        <a class="button is-link" href="index.php?halaman=editdatales&id=<?= $row['id_guru']; ?>">
                                                             <ion-icon name="create"></ion-icon>
                                                         </a>
                                                         <button class="button is-danger" onclick="DeleteData()">
@@ -92,7 +92,7 @@ $data = Index("SELECT * FROM alternatif LIMIT $awal,$halaman");
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "index.php?halaman=hapusdatales&id=<?= $row['id_les']; ?>";
+                window.location.href = "index.php?halaman=hapusdatales&id=<?= $row['id_guru']; ?>";
             }
         })
     }

@@ -63,9 +63,9 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Nama Alternatif</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="nm_les">
+                                        <input class="input" type="text" placeholder="Nama Guru" name="nm_guru">
                                         <span class="icon is-small is-left">
-                                            <ion-icon name="home"></ion-icon>
+                                            <ion-icon name="person"></ion-icon>
                                         </span>
                                     </div>
                                 </div>

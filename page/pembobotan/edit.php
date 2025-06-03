@@ -9,7 +9,7 @@ $id = $_GET["id"];
 $query = Index("SELECT * FROM pembobotan WHERE id_nilai = $id");
 
 foreach ($query as $data) {
-    $data["id_les"];
+    $data["id_guru"];
     $data["id_kriteria"];
     $data["nilai"];
 }
@@ -71,10 +71,10 @@ if (isset($_POST["add"])) {
                                     <label class="label">Data Alternatif</label>
                                     <div class="control has-icons-left">
                                         <div class="select">
-                                            <select name="id_les">
+                                            <select name="id_guru">
                                                 <?php foreach ($alternatif as $row) : ?>
-                                                    <option value="<?= $row["id_les"] ?>" <?php if ($data["id_les"] == $row["id_les"]) : ?> selected="selected" <?php endif; ?>>
-                                                        <?= $row["nm_les"] ?></option>
+                                                    <option value="<?= $row["id_guru"] ?>" <?php if ($data["id_guru"] == $row["id_guru"]) : ?> selected="selected" <?php endif; ?>>
+                                                        <?= $row["nm_guru"] ?></option>
                                                 <?php endforeach ?>
                                             </select>
                                         </div>

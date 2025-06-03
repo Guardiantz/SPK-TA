@@ -61,10 +61,10 @@ if (isset($_POST["add"])) {
                                     <label class="label">Data Alternatif</label>
                                     <div class="control has-icons-left">
                                         <div class="select">
-                                            <select name="id_les">
+                                            <select name="id_guru">
                                                 <option selected disabled>Pilih Alternatif</option>
                                                 <?php foreach ($alternatif as $row) : ?>
-                                                    <option value="<?= $row["id_les"] ?>"><?= $row["nm_les"] ?></option>
+                                                    <option value="<?= $row["id_guru"] ?>"><?= $row["nm_guru"] ?></option>
                                                 <?php endforeach ?>
                                             </select>
                                         </div>

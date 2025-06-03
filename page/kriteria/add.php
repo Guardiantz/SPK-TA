@@ -54,7 +54,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Kode Kriteria</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="kode_kriteria">
+                                        <input class="input" type="text" placeholder="Kode Kriteria" name="kode_kriteria">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="qr-code"></ion-icon>
                                         </span>
@@ -63,7 +63,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Nama Kriteria</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="nm_kriteria">
+                                        <input class="input" type="text" placeholder="Nama Kriteria" name="nm_kriteria">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="pricetag"></ion-icon>
                                         </span>
@@ -72,7 +72,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Bobot</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="bobot">
+                                        <input class="input" type="text" placeholder=" Nilai Bobot" name="bobot">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="barbell"></ion-icon>
                                         </span>

@@ -3,7 +3,7 @@ require("../controller/Les.php");
 
 $id = $_GET['id'];
 
-if (Delete("alternatif", "id_les", $id) > 0) {
+if (Delete("alternatif", "id_guru", $id) > 0) {
     echo "<script>
         Swal.fire({
             icon: 'success',

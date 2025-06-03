@@ -44,9 +44,9 @@ $totalS = 0;
                                         <?php foreach ($alternatif as $row) : ?>
                                             <tr>
                                                 <th><?= $a++ ?></th>
-                                                <td><?= $row["nm_les"] ?></td>
+                                                <td><?= $row["nm_guru"] ?></td>
                                                 <?php foreach ($bobot as $pembobot) : ?>
-                                                    <?php if ($pembobot["id_les"] == $row["id_les"]) : ?>
+                                                    <?php if ($pembobot["id_guru"] == $row["id_guru"]) : ?>
                                                         <td><?= $pembobot["nilai"] ?></td>
                                                     <?php endif ?>
                                                 <?php endforeach ?>
@@ -98,8 +98,8 @@ $totalS = 0;
                         <?php $d = 1 ?>
                         <?php $e = 0 ?>
                         <?php foreach ($alternatif as $les) : ?>
-                            <?php $idles = $les["id_les"] ?>
-                            <?php $bobot = Index("SELECT * FROM pembobotan WHERE id_les = $idles"); ?>
+                            <?php $idles = $les["id_guru"] ?>
+                            <?php $bobot = Index("SELECT * FROM pembobotan WHERE id_guru = $idles"); ?>
                             <?php $test[$e] = 1 ?>
                             S<?= $d++ ?> =
                             <?php foreach ($bobot as $pembobot) : ?>
@@ -160,7 +160,7 @@ $totalS = 0;
                                         <?php $varV[$j] = $test[$i] / $totalS ?>
                                         <tr>
                                             <th><?= $h++ ?></th>
-                                            <td><?= $row["nm_les"] ?></td>
+                                            <td><?= $row["nm_guru"] ?></td>
                                             <td><?= round(round($test[$i], 3) / round($totalS, 3), 3) ?></td>
                                         </tr>
                                         <?php $i++ ?>

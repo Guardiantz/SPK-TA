@@ -60,8 +60,8 @@ $banding2 = Index("SELECT * FROM kriteria");
                                                 </td>
                                                 <td>
                                                     <?php foreach ($banding1 as $result) : ?>
-                                                        <?php if ($row["id_les"] == $result["id_les"]) : ?>
-                                                            <?= $result["nm_les"] ?>
+                                                        <?php if ($row["id_guru"] == $result["id_guru"]) : ?>
+                                                            <?= $result["nm_guru"] ?>
                                                         <?php endif ?>
                                                     <?php endforeach ?>
                                                 </td>
