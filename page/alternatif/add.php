@@ -1,5 +1,5 @@
 <?php
-require("../controller/Les.php");
+require("../controller/Alternatif.php");
 
 if (isset($_POST["add"])) {
     if (Add("alternatif", $_POST) > 0) {
@@ -29,7 +29,7 @@ if (isset($_POST["add"])) {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         }).then(function() {
-            window.location.href = 'index.php?halaman=datales';
+            window.location.href = 'index.php?halaman=dataalternatif';
         });
         </script>";
     }
@@ -44,7 +44,7 @@ if (isset($_POST["add"])) {
                         <div class="card-header">
                             <p class="card-header-title">Form Tambah Data</p>
                             <div class="buttons card-header-icon">
-                                <a class="button is-link" href="index.php?halaman=datales">
+                                <a class="button is-link" href="index.php?halaman=dataalternatif">
                                     <ion-icon name="arrow-back-circle" class="mr-2"></ion-icon>Kembali
                                 </a>
                             </div>

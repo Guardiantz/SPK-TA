@@ -97,9 +97,9 @@ $totalS = 0;
                         <p>Pembobotan :</p>
                         <?php $d = 1 ?>
                         <?php $e = 0 ?>
-                        <?php foreach ($alternatif as $les) : ?>
-                            <?php $idles = $les["id_guru"] ?>
-                            <?php $bobot = Index("SELECT * FROM pembobotan WHERE id_guru = $idles"); ?>
+                        <?php foreach ($alternatif as $guru) : ?>
+                            <?php $idguru = $guru["id_guru"] ?>
+                            <?php $bobot = Index("SELECT * FROM pembobotan WHERE id_guru = $idguru"); ?>
                             <?php $test[$e] = 1 ?>
                             S<?= $d++ ?> =
                             <?php foreach ($bobot as $pembobot) : ?>

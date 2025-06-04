@@ -67,7 +67,7 @@ if (isset($_POST["add"])) {
                                     <label class="label">Kode Kriteria</label>
                                     <div class="control has-icons-left">
                                         <input type="hidden" name="id_kriteria" value="<?= $row["id_kriteria"] ?>">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="kode_kriteria" value="<?= $row["kode_kriteria"] ?>">
+                                        <input class="input" type="text" placeholder="Kode Kriteria" name="kode_kriteria" value="<?= $row["kode_kriteria"] ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="qr-code"></ion-icon>
                                         </span>
@@ -76,7 +76,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Nama Kriteria</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="nm_kriteria" value="<?= $row["nm_kriteria"]; ?>">
+                                        <input class="input" type="text" placeholder="Nama Kriteria" name="nm_kriteria" value="<?= $row["nm_kriteria"]; ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="pricetag"></ion-icon>
                                         </span>
@@ -85,7 +85,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Bobot</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="bobot" value="<?= $row["bobot"]; ?>">
+                                        <input class="input" type="text" placeholder="Bobot" name="bobot" value="<?= $row["bobot"]; ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="barbell"></ion-icon>
                                         </span>
@@ -96,7 +96,7 @@ if (isset($_POST["add"])) {
                                     <div class="control has-icons-left">
                                         <div class="select">
                                             <select name="status">
-                                                <option selected disabled><?= $row["status"]; ?></option>
+                                                <option value="<?= $row["status"]; ?>" selected hidden><?= $row["status"]; ?></option>
                                                 <option value="COST">COST</option>
                                                 <option value="BENEFIT">BENEFIT</option>
                                             </select>

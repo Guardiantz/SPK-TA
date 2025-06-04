@@ -17,7 +17,13 @@ if (!isset($_SESSION['login'])) {
     <title>SPK</title>
     <link rel="stylesheet" href="../asset/css/bulma.min.css">
     <link rel="stylesheet" href="../asset/css/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,7 +45,7 @@ if (!isset($_SESSION['login'])) {
             <div id="NavbarUtama" class="navbar-menu">
                 <div class="navbar-end">
                     <a class="navbar-item" href="index.php?halaman=home">Home</a>
-                    <a class="navbar-item" href="index.php?halaman=datales">Alternatif</a>
+                    <a class="navbar-item" href="index.php?halaman=dataalternatif">Alternatif</a>
                     <a class="navbar-item" href="index.php?halaman=datakriteria">Kriteria</a>
                     <a class="navbar-item" href="index.php?halaman=databobot">Pembobotan</a>
                     <a class="navbar-item" href="index.php?halaman=datapenilaian">Perhitungan</a>

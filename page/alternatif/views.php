@@ -1,5 +1,5 @@
 <?php
-include_once("../controller/Les.php");
+include_once("../controller/Alternatif.php");
 
 $halaman = 5;
 $hasil = count(Index("SELECT * FROM alternatif"));
@@ -18,7 +18,7 @@ $data = Index("SELECT * FROM alternatif LIMIT $awal,$halaman");
                         <div class="card-header">
                             <p class="card-header-title">Table Alternatif</p>
                             <div class="buttons card-header-icon">
-                                <a class="button is-link" href="index.php?halaman=tambahdatales">
+                                <a class="button is-link" href="index.php?halaman=tambahdataalternatif">
                                     <ion-icon name="add-circle" class="mr-2"></ion-icon>Tambah Data
                                 </a>
                             </div>
@@ -51,7 +51,7 @@ $data = Index("SELECT * FROM alternatif LIMIT $awal,$halaman");
                                                 <td><?= $row["nm_guru"] ?></td>
                                                 <td>
                                                     <div class="buttons">
-                                                        <a class="button is-link" href="index.php?halaman=editdatales&id=<?= $row['id_guru']; ?>">
+                                                        <a class="button is-link" href="index.php?halaman=editdataalternatif&id=<?= $row['id_guru']; ?>">
                                                             <ion-icon name="create"></ion-icon>
                                                         </a>
                                                         <button class="button is-danger" onclick="DeleteData()">
@@ -92,7 +92,7 @@ $data = Index("SELECT * FROM alternatif LIMIT $awal,$halaman");
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "index.php?halaman=hapusdatales&id=<?= $row['id_guru']; ?>";
+                window.location.href = "index.php?halaman=hapusdataalternatif&id=<?= $row['id_guru']; ?>";
             }
         })
     }

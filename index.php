@@ -23,20 +23,31 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="asset/css/bulma.min.css">
     <link rel="stylesheet" href="asset/css/animate.min.css">
     <link rel="stylesheet" href="asset/css/costume.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
+
     <section class="section" id="section">
         <div class="container">
             <div class="row">
                 <div class="columns is-centered">
-                    <div class="column is-5">
-                        <div class="card">
-                            <div class="card-header">
-                                <p class="card-header-title">Login</p>
+                    <div class="">
+                        <div class="card" style="width: 450px; height: 410px; margin-top: 80px;">
+                            <div class="card-header" style="display: flex; flex-direction: column; align-items: center; padding-top: 20px; padding-bottom: 11px;">
+                                <p class="card-header-title" style="font-size: 20px; padding: 0; margin-bottom: 0;">WELCOME TO</p>
+                                <p class="card-header-title" style="font-size: 20px; font-weight: bold; margin-top: 0; padding: 0; margin-bottom: 10px;">
+                                    SISTEM PENDUKUNG KEPUTUSAN
+                                </p>
                             </div>
-                            <div class="card-content">
+
+                            <div class="card-content" style="margin-top: 11px;">
                                 <?php if (isset($login['error'])) : ?>
                                     <p>
                                         <?= "<script>
@@ -59,27 +70,35 @@ if (isset($_POST['login'])) {
                                     <div class="field">
                                         <label class="label">Username</label>
                                         <div class="control has-icons-left">
-                                            <input class="input" type="text" placeholder="Username" name="username" required autocomplete="off" autofocus>
+                                            <input class="input" type="text" placeholder="Username" name="username" required autocomplete="off" autofocus
+                                                style="border-radius: 15px; width: 400px; height: 45px; font-size: 16px;">
                                             <span class="icon is-small is-left">
                                                 <ion-icon name="person"></ion-icon>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="field">
+
+                                    <div class="field" style="margin-top: 10px;">
                                         <label class="label">Password</label>
                                         <div class="control has-icons-left">
-                                            <input class="input" type="password" placeholder="Password" name="password" required autocomplete="off">
+                                            <input class="input" type="password" placeholder="Password" name="password" required autocomplete="off"
+                                                style="border-radius: 15px; width: 400px; height: 45px; font-size: 16px;">
                                             <span class="icon is-small is-left">
                                                 <ion-icon name="lock-closed"></ion-icon>
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="buttons">
-                                        <button class="button is-link" type="submit" name="login">
-                                            <ion-icon name="log-in" class="mr-2"></ion-icon>Login
-                                        </button>
+
+                                    <div class="field" style="margin-top: 25px;">
+                                        <div class="control">
+                                            <button class="button is-link" type="submit" name="login"
+                                                style="border-radius: 15px; width: 400px; height: 48px; font-size: 18px; font-weight: bold;">
+                                                <ion-icon name="log-in" class="mr-2"></ion-icon>Login
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>

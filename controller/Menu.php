@@ -6,17 +6,17 @@ if (isset($_GET['halaman'])) {
         case 'home':
             include "home/index.php";
             break;
-        case 'datales':
-            include "les/views.php";
+        case 'dataalternatif':
+            include "alternatif/views.php";
             break;
-        case 'tambahdatales':
-            include "les/add.php";
+        case 'tambahdataalternatif':
+            include "alternatif/add.php";
             break;
-        case 'editdatales':
-            include "les/edit.php";
+        case 'editdataalternatif':
+            include "alternatif/edit.php";
             break;
-        case 'hapusdatales':
-            include "les/delete.php";
+        case 'hapusdataalternatif':
+            include "alternatif/delete.php";
             break;
         case 'datakriteria':
             include "kriteria/views.php";

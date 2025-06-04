@@ -18,10 +18,10 @@ function Index($query)
 function Add($table, $data)
 {
     $koneksi = Koneksi();
-    $idles = htmlspecialchars($data["id_guru"]);
+    $idguru = htmlspecialchars($data["id_guru"]);
     $idkriteria = htmlspecialchars($data["id_kriteria"]);
     $nilai = htmlspecialchars($data["nilai"]);
-    $query = "INSERT INTO $table VALUES (null, '$idles', '$idkriteria','$nilai')";
+    $query = "INSERT INTO $table VALUES (null, '$idguru', '$idkriteria','$nilai')";
 
     mysqli_query($koneksi, $query);
     return mysqli_affected_rows($koneksi);
@@ -31,10 +31,10 @@ function Edit($table, $data)
 {
     $koneksi = Koneksi();
     $idnilai = htmlspecialchars($data["id_nilai"]);
-    $idles = htmlspecialchars($data["id_guru"]);
+    $idguru = htmlspecialchars($data["id_guru"]);
     $idkriteria = htmlspecialchars($data["id_kriteria"]);
     $nilai = htmlspecialchars($data["nilai"]);
-    $query = "UPDATE $table SET id_guru = '$idles', id_kriteria = '$idkriteria', nilai = '$nilai' WHERE id_nilai = $idnilai";
+    $query = "UPDATE $table SET id_guru = '$idguru', id_kriteria = '$idkriteria', nilai = '$nilai' WHERE id_nilai = $idnilai";
 
     mysqli_query($koneksi, $query);
     return mysqli_affected_rows($koneksi);

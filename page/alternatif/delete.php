@@ -1,5 +1,5 @@
 <?php
-require("../controller/Les.php");
+require("../controller/Alternatif.php");
 
 $id = $_GET['id'];
 
@@ -16,7 +16,7 @@ if (Delete("alternatif", "id_guru", $id) > 0) {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         }).then(function() {
-            window.location.href = 'index.php?halaman=datales';
+            window.location.href = 'index.php?halaman=dataalternatif';
             });
         </script>";
 } else {
@@ -32,7 +32,7 @@ if (Delete("alternatif", "id_guru", $id) > 0) {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         }).then(function() {
-            window.location.href = 'index.php?halaman=datales';
+            window.location.href = 'index.php?halaman=dataalternatif';
             });
         </script>";
 }

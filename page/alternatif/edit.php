@@ -1,9 +1,9 @@
 <?php
-require("../controller/Les.php");
+require("../controller/Alternatif.php");
 
 $id = $_GET["id"];
 
-$query = Index("SELECT * FROM alternatif WHERE id_ = $id");
+$query = Index("SELECT * FROM alternatif WHERE id_guru = $id");
 foreach ($query as $row) {
     $row["kode_alternatif"];
     $row["nm_guru"];
@@ -23,7 +23,7 @@ if (isset($_POST["add"])) {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         }).then(function() {
-            window.location.href = 'index.php?halaman=datales';
+            window.location.href = 'index.php?halaman=dataalternatif';
         });
         </script>";
     } else {
@@ -39,7 +39,7 @@ if (isset($_POST["add"])) {
                 popup: 'animate__animated animate__fadeOutUp'
             }
         }).then(function() {
-            window.location.href = 'index.php?halaman=datales';
+            window.location.href = 'index.php?halaman=dataalternatif';
         });
         </script>";
     }
