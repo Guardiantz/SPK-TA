@@ -6,7 +6,7 @@ $kriteria = Index("SELECT * FROM kriteria");
 
 
 $id = $_GET["id"];
-$query = Index("SELECT * FROM pembobotan WHERE id_nilai = $id");
+$query = Index("SELECT * FROM penilaian WHERE id_nilai = $id");
 
 foreach ($query as $data) {
     $data["id_guru"];
@@ -15,7 +15,7 @@ foreach ($query as $data) {
 }
 
 if (isset($_POST["add"])) {
-    if (Edit("pembobotan", $_POST) > 0) {
+    if (Edit("penilaian", $_POST) > 0) {
         echo "<script>
         Swal.fire({
             icon: 'success',

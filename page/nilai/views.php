@@ -3,7 +3,7 @@ require("../controller/Kriteria.php");
 
 $kriteria = Index("SELECT * FROM kriteria");
 $alternatif = Index("SELECT * FROM alternatif");
-$bobot = Index("SELECT * FROM pembobotan");
+$bobot = Index("SELECT * FROM penilaian");
 $maxkriteria = Index("SELECT SUM(bobot) AS Total FROM kriteria");
 $test = [];
 $varV = [];
@@ -99,7 +99,7 @@ $totalS = 0;
                         <?php $e = 0 ?>
                         <?php foreach ($alternatif as $guru) : ?>
                             <?php $idguru = $guru["id_guru"] ?>
-                            <?php $bobot = Index("SELECT * FROM pembobotan WHERE id_guru = $idguru"); ?>
+                            <?php $bobot = Index("SELECT * FROM penilaian WHERE id_guru = $idguru"); ?>
                             <?php $test[$e] = 1 ?>
                             S<?= $d++ ?> =
                             <?php foreach ($bobot as $pembobot) : ?>

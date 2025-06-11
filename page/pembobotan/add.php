@@ -5,7 +5,7 @@ $alternatif = Index("SELECT * FROM alternatif");
 $kriteria = Index("SELECT * FROM kriteria");
 
 if (isset($_POST["add"])) {
-    if (Add("pembobotan", $_POST) > 0) {
+    if (Add("penilaian", $_POST) > 0) {
         echo "<script>
         Swal.fire({
             icon: 'success',

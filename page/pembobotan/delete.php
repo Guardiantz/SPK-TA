@@ -3,7 +3,7 @@ require("../controller/Bobot.php");
 
 $id = $_GET['id'];
 
-if (Delete("pembobotan", "id_nilai", $id) > 0) {
+if (Delete("penilaian", "id_nilai", $id) > 0) {
     echo "<script>
         Swal.fire({
             icon: 'success',

@@ -47,7 +47,7 @@ if (!isset($_SESSION['login'])) {
                     <a class="navbar-item" href="index.php?halaman=home">Home</a>
                     <a class="navbar-item" href="index.php?halaman=dataalternatif">Alternatif</a>
                     <a class="navbar-item" href="index.php?halaman=datakriteria">Kriteria</a>
-                    <a class="navbar-item" href="index.php?halaman=databobot">Pembobotan</a>
+                    <a class="navbar-item" href="index.php?halaman=databobot">Penilaian</a>
                     <a class="navbar-item" href="index.php?halaman=datapenilaian">Perhitungan</a>
                     <div class="navbar-item">
                         <div class="buttons">
