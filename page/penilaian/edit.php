@@ -1,5 +1,5 @@
 <?php
-require("../controller/Bobot.php");
+require("../controller/Penilaian.php");
 
 $alternatif = Index("SELECT * FROM alternatif");
 $kriteria = Index("SELECT * FROM kriteria");
@@ -70,40 +70,55 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Data Alternatif</label>
                                     <div class="control has-icons-left">
-                                        <div class="select">
-                                            <select name="id_guru">
-                                                <?php foreach ($alternatif as $row) : ?>
-                                                    <option value="<?= $row["id_guru"] ?>" <?php if ($data["id_guru"] == $row["id_guru"]) : ?> selected="selected" <?php endif; ?>>
-                                                        <?= $row["nm_guru"] ?></option>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                        <div class="icon is-small is-left">
-                                            <ion-icon name="chevron-down"></ion-icon>
-                                        </div>
+                                        <!-- Hidden untuk kirim nilai id_guru -->
+                                        <input type="hidden" name="id_guru" value="<?= $data["id_guru"]; ?>">
+
+                                        <!-- Tampilkan nama guru readonly -->
+                                        <input class="input" type="text" placeholder="Nama Guru"
+                                            value="<?php
+                                                    foreach ($alternatif as $row) {
+                                                        if ($row["id_guru"] == $data["id_guru"]) {
+                                                            echo $row["nm_guru"];
+                                                            break;
+                                                        }
+                                                    }
+                                                    ?>" readonly>
+
+                                        <!-- Ikon kiri -->
+                                        <span class="icon is-small is-left">
+                                            <ion-icon name="person"></ion-icon>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="field">
                                     <label class="label">Data Kriteria</label>
                                     <div class="control has-icons-left">
-                                        <div class="select">
-                                            <select name="id_kriteria">
-                                                <?php foreach ($kriteria as $row) : ?>
-                                                    <option value="<?= $row["id_kriteria"] ?>" <?php if ($data["id_kriteria"] == $row["id_kriteria"]) : ?> selected="selected" <?php endif; ?>>
-                                                        <?= $row["nm_kriteria"] ?></option>
-                                                <?php endforeach ?>
-                                            </select>
-                                        </div>
-                                        <div class="icon is-small is-left">
-                                            <ion-icon name="chevron-down"></ion-icon>
-                                        </div>
+                                        <!-- Hidden untuk kirim nilai id_kriteria -->
+                                        <input type="hidden" name="id_kriteria" value="<?= $data["id_kriteria"]; ?>">
+
+                                        <!-- Tampilkan nama kriteria readonly -->
+                                        <input class="input" type="text" placeholder="Nama Kriteria"
+                                            value="<?php
+                                                    foreach ($kriteria as $row) {
+                                                        if ($row["id_kriteria"] == $data["id_kriteria"]) {
+                                                            echo $row["nm_kriteria"];
+                                                            break;
+                                                        }
+                                                    }
+                                                    ?>" readonly>
+
+                                        <!-- Ikon kiri -->
+                                        <span class="icon is-small is-left">
+                                            <ion-icon name="pricetag"></ion-icon> <!-- Ganti ikon sesuai kebutuhan -->
+                                        </span>
                                     </div>
                                 </div>
+
                                 <div class="field">
                                     <label class="label">Nilai</label>
                                     <div class="control has-icons-left">
                                         <input type="hidden" value="<?= $data["id_nilai"]; ?>" name="id_nilai">
-                                        <input class="input" type="text" placeholder="Nilai untuk setiap alternatif" name="nilai" value="<?= $data["nilai"] ?>">
+                                        <input class="input" type="number" placeholder="Nilai untuk setiap alternatif" name="nilai" value="<?= $data["nilai"] ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="barbell"></ion-icon>
                                         </span>

@@ -1,5 +1,5 @@
 <?php
-require("../controller/Bobot.php");
+require("../controller/Penilaian.php");
 
 $id = $_GET['id'];
 

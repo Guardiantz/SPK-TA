@@ -65,7 +65,7 @@ if (isset($_POST["add"])) {
                                     <label class="label">Kode Alternatif</label>
                                     <div class="control has-icons-left">
                                         <input type="hidden" value="<?= $row["id_guru"]; ?>" name="id_guru">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="kode_alternatif" value="<?= $row["kode_alternatif"] ?>" readonly>
+                                        <input class="input" type="text" placeholder="Kode Alternatif" name="kode_alternatif" value="<?= $row["kode_alternatif"] ?>" readonly>
                                         <span class="icon is-small is-left">
                                             <ion-icon name="qr-code"></ion-icon>
                                         </span>
@@ -74,7 +74,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Nama Alternatif</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="nm_guru" value="<?= $row["nm_guru"]; ?>">
+                                        <input class="input" type="text" placeholder="Nama Alternatif" name="nm_guru" value="<?= $row["nm_guru"]; ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="home"></ion-icon>
                                         </span>

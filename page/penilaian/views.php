@@ -1,5 +1,5 @@
 <?php
-require("../controller/Bobot.php");
+require("../controller/Penilaian.php");
 
 $halaman = 5;
 $hasil = count(Index("SELECT * FROM penilaian"));

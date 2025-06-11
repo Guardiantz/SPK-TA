@@ -31,16 +31,16 @@ if (isset($_GET['halaman'])) {
             include "kriteria/delete.php";
             break;
         case 'databobot':
-            include "pembobotan/views.php";
+            include "penilaian/views.php";
             break;
         case 'tambahdatabobot':
-            include "pembobotan/add.php";
+            include "penilaian/add.php";
             break;
         case 'editdatabobot':
-            include "pembobotan/edit.php";
+            include "penilaian/edit.php";
             break;
         case 'hapusdatabobot':
-            include "pembobotan/delete.php";
+            include "penilaian/delete.php";
             break;
         case 'datapenilaian':
             include "nilai/views.php";

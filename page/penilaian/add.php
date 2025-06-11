@@ -1,10 +1,31 @@
 <?php
-require("../controller/Bobot.php");
+require("../controller/Penilaian.php");
 
 $alternatif = Index("SELECT * FROM alternatif");
 $kriteria = Index("SELECT * FROM kriteria");
 
+
 if (isset($_POST["add"])) {
+
+    if (isset($_POST["id_guru"]) && isset($_POST["id_kriteria"])) {
+        $id_guru = $_POST['id_guru'];
+        $id_kriteria = $_POST['id_kriteria'];
+
+        $cek = Index("SELECT * FROM penilaian WHERE id_guru = '$id_guru' AND id_kriteria = '$id_kriteria'");
+
+        if (count($cek) > 0) {
+            echo "<script>
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Duplikat Data',
+                    text: 'Penilaian untuk guru dan kriteria ini sudah ada.',
+                }).then(() => {
+                    window.location.href = 'index.php?halaman=databobot';
+                });
+            </script>";
+            exit;
+        }
+    }
     if (Add("penilaian", $_POST) > 0) {
         echo "<script>
         Swal.fire({
@@ -77,7 +98,7 @@ if (isset($_POST["add"])) {
                                     <label class="label">Data Kriteria</label>
                                     <div class="control has-icons-left">
                                         <div class="select">
-                                            <select name="id_kriteria">
+                                            <select name="id_kriteria" required>
                                                 <option selected disabled>Pilih Kriteria</option>
                                                 <?php foreach ($kriteria as $row) : ?>
                                                     <option value="<?= $row["id_kriteria"] ?>"><?= $row["nm_kriteria"] ?></option>
@@ -92,7 +113,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Nilai</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nilai untuk setiap alternatif" name="nilai">
+                                        <input class="input" type="number" placeholder="Nilai untuk setiap alternatif" name="nilai">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="barbell"></ion-icon>
                                         </span>
