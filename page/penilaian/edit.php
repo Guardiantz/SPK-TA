@@ -4,7 +4,6 @@ require("../controller/Penilaian.php");
 $alternatif = Index("SELECT * FROM alternatif");
 $kriteria = Index("SELECT * FROM kriteria");
 
-
 $id = $_GET["id"];
 $query = Index("SELECT * FROM penilaian WHERE id_nilai = $id");
 
@@ -15,38 +14,95 @@ foreach ($query as $data) {
 }
 
 if (isset($_POST["add"])) {
-    if (Edit("penilaian", $_POST) > 0) {
+    // Validasi inputan
+    $id_guru = isset($_POST['id_guru']) ? trim($_POST['id_guru']) : '';
+    $id_kriteria = isset($_POST['id_kriteria']) ? trim($_POST['id_kriteria']) : '';
+    $nilai = isset($_POST['nilai']) ? trim($_POST['nilai']) : '';
+
+    // Cek apakah ada input kosong
+    if (empty($id_guru) || empty($id_kriteria) || $id_kriteria === "Pilih Kriteria" || empty($nilai)) {
         echo "<script>
         Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: 'Data berhasil masuk kedalam database',
+            icon: 'warning',
+            title: 'Perhatian',
+            text: 'Semua field wajib diisi!',
             showClass: {
                 popup: 'animate__animated animate__fadeInDown'
             },
             hideClass: {
                 popup: 'animate__animated animate__fadeOutUp'
             }
-        }).then(function() {
-            window.location.href = 'index.php?halaman=databobot';
         });
         </script>";
-    } else {
+    }
+    // Validasi nilai tidak mengandung koma
+    elseif (strpos($nilai, ',') !== false) {
         echo "<script>
         Swal.fire({
             icon: 'error',
-            title: 'Gagal',
-            text: 'Data gagal masuk kedalam database',
+            title: 'Format Angka Salah',
+            text: 'Gunakan tanda titik (.) sebagai pemisah desimal, bukan koma (,).',
             showClass: {
                 popup: 'animate__animated animate__fadeInDown'
             },
             hideClass: {
                 popup: 'animate__animated animate__fadeOutUp'
             }
-        }).then(function() {
-            window.location.href = 'index.php?halaman=databobot';
         });
         </script>";
+        exit;
+    }
+    // Validasi nilai harus antara 10 sampai 100
+    elseif (!is_numeric($nilai) || $nilai < 10 || $nilai > 100) {
+        echo "<script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Nilai Tidak Valid',
+            text: 'Nilai harus berada dalam rentang 10 sampai 100.',
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+        </script>";
+        exit;
+    } else {
+        // Simpan data edit
+        if (Edit("penilaian", $_POST) > 0) {
+            echo "<script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Data berhasil diperbarui ke dalam database',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then(function() {
+                window.location.href = 'index.php?halaman=databobot';
+            });
+            </script>";
+        } else {
+            echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Data gagal diperbarui ke dalam database',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then(function() {
+                window.location.href = 'index.php?halaman=databobot';
+            });
+            </script>";
+        }
     }
 }
 ?>
