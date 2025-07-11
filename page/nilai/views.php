@@ -124,6 +124,8 @@ $totalS = 0;
                             <?php $e++ ?>
                             <br>
                         <?php endforeach ?>
+
+                        <!-- BAGIAN 3 -->
                         <hr>
                         <h4 class="subtitle">Bagian 3 : Mencari Nilai V (V)</h4>
                         <?php $f = 1 ?>

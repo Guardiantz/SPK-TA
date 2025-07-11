@@ -1,12 +1,17 @@
 <?php
 require("../controller/Login.php");
-
 session_start();
 
+// Cek apakah sudah login
 if (!isset($_SESSION['login'])) {
     header("Location: ../index.php");
+    exit;
 }
+
+// Cek apakah user adalah admin
+$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +41,7 @@ if (!isset($_SESSION['login'])) {
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="NavbarUtama">
+
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -43,12 +49,16 @@ if (!isset($_SESSION['login'])) {
             </div>
 
             <div id="NavbarUtama" class="navbar-menu">
+
                 <div class="navbar-end">
                     <a class="navbar-item" href="index.php?halaman=home">Home</a>
                     <a class="navbar-item" href="index.php?halaman=dataalternatif">Alternatif</a>
                     <a class="navbar-item" href="index.php?halaman=datakriteria">Kriteria</a>
                     <a class="navbar-item" href="index.php?halaman=databobot">Penilaian</a>
                     <a class="navbar-item" href="index.php?halaman=datapenilaian">Perhitungan</a>
+
+                    
+
                     <div class="navbar-item">
                         <div class="buttons">
                             <a class="button is-danger" href="../logout.php">
@@ -58,6 +68,7 @@ if (!isset($_SESSION['login'])) {
                     </div>
                 </div>
             </div>
+
         </div>
     </nav>
     <!-- AKHIR NAVBAR -->
@@ -70,6 +81,31 @@ if (!isset($_SESSION['login'])) {
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <script src="asset/js/main.js"></script>
+    <script>
+        // Script untuk toggle hamburger Bulma
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dapatkan semua elemen "navbar-burger"
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+            // Cek jika ada navbar burger
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        // Ambil target dari "data-target"
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+
+                        // Toggle class "is-active"
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+    </script>
+
+
+
 </body>
 
 </html>

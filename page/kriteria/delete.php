@@ -2,13 +2,18 @@
 require("../controller/Kriteria.php");
 
 $id = $_GET['id'];
+$koneksi = Koneksi();
 
-if (Delete("kriteria", "id_kriteria", $id) > 0) {
+// Cek apakah kriteria masih digunakan di tabel penilaian
+$check = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE id_kriteria = $id");
+
+if (mysqli_num_rows($check) > 0) {
+    // Jika masih digunakan, tampilkan alert
     echo "<script>
         Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: 'Data berhasil dihapus',
+            icon: 'warning',
+            title: 'Tidak Bisa Dihapus',
+            text: 'Data tidak dapat dihapus karena masih digunakan dalam tabel penilaian. Silakan hapus penilaian terlebih dahulu.',
             showClass: {
                 popup: 'animate__animated animate__fadeInDown'
             },
@@ -17,22 +22,41 @@ if (Delete("kriteria", "id_kriteria", $id) > 0) {
             }
         }).then(function() {
             window.location.href = 'index.php?halaman=datakriteria';
-            });
-        </script>";
+        });
+    </script>";
 } else {
-    echo "<script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal',
-            text: 'Data gagal dihapus',
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-            }
-        }).then(function() {
-            window.location.href = 'index.php?halaman=datakriteria';
+    // Lanjut hapus jika tidak digunakan
+    if (Delete("kriteria", "id_kriteria", $id) > 0) {
+        echo "<script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Data berhasil dihapus',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then(function() {
+                window.location.href = 'index.php?halaman=datakriteria';
             });
         </script>";
+    } else {
+        echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Data gagal dihapus',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            }).then(function() {
+                window.location.href = 'index.php?halaman=datakriteria';
+            });
+        </script>";
+    }
 }

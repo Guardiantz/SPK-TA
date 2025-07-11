@@ -41,8 +41,37 @@ function Edit($table, $data)
 function Delete($table, $tableid, $id)
 {
     $koneksi = Koneksi();
-    $query = "DELETE FROM $table WHERE $tableid = $id";
-    mysqli_query($koneksi, $query);
 
-    return mysqli_affected_rows($koneksi);
+    // Fungsi pengecekan apakah tabel ada
+    function TableExists($koneksi, $tableName)
+    {
+        $result = mysqli_query($koneksi, "SHOW TABLES LIKE '$tableName'");
+        return mysqli_num_rows($result) > 0;
+    }
+
+    // Cek relasi ke tabel penilaian
+    if (TableExists($koneksi, 'penilaian')) {
+        $cekPenilaian = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE id_guru = $id");
+        if (mysqli_num_rows($cekPenilaian) > 0) {
+            return "penilaian";
+        }
+    }
+
+    // Cek relasi ke tabel penilaian 
+    if (TableExists($koneksi, 'penilaian')) {
+        $cekpenilaian = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE id_guru = $id");
+        if (mysqli_num_rows($cekpenilaian) > 0) {
+            return "penilaian";
+        }
+    }
+
+    // Coba hapus data
+    try {
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        $query = "DELETE FROM $table WHERE $tableid = $id";
+        mysqli_query($koneksi, $query);
+        return true;
+    } catch (mysqli_sql_exception $e) {
+        return false;
+    }
 }

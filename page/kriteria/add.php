@@ -7,7 +7,7 @@ $query = mysqli_query($conn, "SELECT kode_kriteria FROM kriteria ORDER BY id_kri
 
 if (mysqli_num_rows($query) > 0) {
     $row = mysqli_fetch_assoc($query);
-    // Ambil angka dari kode, misal "C3" jadi ambil "3"
+    // Ambil angka dari kode, misal "A3" jadi ambil "3"
     $num = (int)substr($row['kode_kriteria'], 1);
     $nextNum = $num + 1;
     $lastCode = "A" . $nextNum;
@@ -16,38 +16,75 @@ if (mysqli_num_rows($query) > 0) {
 }
 
 if (isset($_POST["add"])) {
-    if (Add("kriteria", $_POST) > 0) {
+    $nama = isset($_POST['nm_kriteria']) ? trim($_POST['nm_kriteria']) : '';
+    $bobot = isset($_POST['bobot']) ? trim($_POST['bobot']) : '';
+    $status = isset($_POST['status']) ? $_POST['status'] : '';
+
+    if (empty($nama) || empty($bobot) || empty($status) || $status === "Pilih Status") {
         echo "<script>
         Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: 'Data berhasil masuk kedalam database',
+            icon: 'warning',
+            title: 'Perhatian',
+            text: 'Semua field wajib diisi!',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
             hideClass: {
                 popup: 'animate_animated animate_fadeOutUp'
             }
-        })
-        </script>";
-    } else {
-        echo "<script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal',
-            text: 'Data gagal masuk kedalam database',
-            showClass: {
-                popup: 'animate_animated animate_fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate_animated animate_fadeOutUp'
-            }
-        }).then(function() {
-            window.location.href = 'index.php?halaman=datakriteria';
         });
         </script>";
     }
+    // Validasi nama kriteria tidak boleh hanya angka
+    elseif (is_numeric($nama)) {
+        echo "<script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Format Nama Salah',
+            text: 'Nama kriteria harus berupa teks, tidak boleh hanya berisi angka!',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        });
+        </script>";
+    } else {
+        if (Add("kriteria", $_POST) > 0) {
+            echo "<script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Data berhasil masuk kedalam database',
+                showClass: {
+                    popup: 'animate_animated animate_fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate_animated animate_fadeOutUp'
+                }
+            });
+            </script>";
+        } else {
+            echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Data gagal masuk kedalam database',
+                showClass: {
+                    popup: 'animate_animated animate_fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate_animated animate_fadeOutUp'
+                }
+            }).then(function() {
+                window.location.href = 'index.php?halaman=datakriteria';
+            });
+            </script>";
+        }
+    }
 }
+
 ?>
 <section class="section">
     <div class="container">

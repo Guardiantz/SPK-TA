@@ -16,36 +16,70 @@ if (mysqli_num_rows($query) > 0) {
 }
 
 if (isset($_POST["add"])) {
-    if (Add("alternatif", $_POST) > 0) {
+    $nama = trim($_POST['nm_guru']); // hilangkan spasi depan belakang
+
+    if (empty($nama)) {
         echo "<script>
         Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: 'Data berhasil masuk kedalam database',
+            icon: 'warning',
+            title: 'Perhatian',
+            text: 'Nama tidak boleh kosong!',
             showClass: {
                 popup: 'animate_animated animate_fadeInDown'
             },
             hideClass: {
                 popup: 'animate_animated animate_fadeOutUp'
             }
-        })
-        </script>";
-    } else {
-        echo "<script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal',
-            text: 'Data gagal masuk kedalam database',
-            showClass: {
-                popup: 'animate_animated animate_fadeInDown'
-            },
-            hideClass: {
-                popup: 'animate_animated animate_fadeOutUp'
-            }
-        }).then(function() {
-            window.location.href = 'index.php?halaman=dataalternatif';
         });
         </script>";
+    }
+    // Cek jika nama hanya angka
+    elseif (is_numeric($nama)) {
+        echo "<script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Format Nama Salah',
+            text: 'Nama alternatif harus berupa teks, tidak boleh berupa angka!',
+            showClass: {
+                popup: 'animate_animated animate_fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate_animated animate_fadeOutUp'
+            }
+        });
+        </script>";
+    } else {
+        if (Add("alternatif", $_POST) > 0) {
+            echo "<script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Data berhasil masuk kedalam database',
+                showClass: {
+                    popup: 'animate_animated animate_fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate_animated animate_fadeOutUp'
+                }
+            });
+            </script>";
+        } else {
+            echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Data gagal masuk kedalam database',
+                showClass: {
+                    popup: 'animate_animated animate_fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate_animated animate_fadeOutUp'
+                }
+            }).then(function() {
+                window.location.href = 'index.php?halaman=dataalternatif';
+            });
+            </script>";
+        }
     }
 }
 ?>
