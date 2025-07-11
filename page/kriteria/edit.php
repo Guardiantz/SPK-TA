@@ -19,10 +19,10 @@ if (isset($_POST["add"])) {
             title: 'Berhasil',
             text: 'Data berhasil masuk kedalam database',
             showClass: {
-                popup: 'animate__animated animate__fadeInDown'
+                popup: 'animate_animated animate_fadeInDown'
             },
             hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
+                popup: 'animate_animated animate_fadeOutUp'
             }
         }).then(function() {
             window.location.href = 'index.php?halaman=datakriteria';
@@ -35,10 +35,10 @@ if (isset($_POST["add"])) {
             title: 'Gagal',
             text: 'Data gagal masuk kedalam database',
             showClass: {
-                popup: 'animate__animated animate__fadeInDown'
+                popup: 'animate_animated animate_fadeInDown'
             },
             hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
+                popup: 'animate_animated animate_fadeOutUp'
             }
         }).then(function() {
             window.location.href = 'index.php?halaman=datakriteria';
@@ -67,7 +67,7 @@ if (isset($_POST["add"])) {
                                     <label class="label">Kode Kriteria</label>
                                     <div class="control has-icons-left">
                                         <input type="hidden" name="id_kriteria" value="<?= $row["id_kriteria"] ?>">
-                                        <input class="input" type="text" placeholder="Kode Kriteria" name="kode_kriteria" value="<?= $row["kode_kriteria"] ?>">
+                                        <input class="input" type="text" placeholder="Kode Kriteria" name="kode_kriteria" value="<?= $row["kode_kriteria"] ?>" readonly>
                                         <span class="icon is-small is-left">
                                             <ion-icon name="qr-code"></ion-icon>
                                         </span>
@@ -85,7 +85,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Bobot</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Bobot" name="bobot" value="<?= $row["bobot"]; ?>">
+                                        <input class="input" type="number" placeholder="Bobot" name="bobot" value="<?= $row["bobot"]; ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="barbell"></ion-icon>
                                         </span>

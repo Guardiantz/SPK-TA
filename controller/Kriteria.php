@@ -45,7 +45,17 @@ function Edit($table, $data)
 function Delete($table, $tableid, $id)
 {
     $koneksi = Koneksi();
-    $query = "DELETE FROM $table WHERE $tableid = $id";
+    $id = (int)$id;
+
+    if ($table === 'kriteria') {
+        $check = mysqli_query($koneksi, "SELECT * FROM penilaian WHERE $tableid = $id");
+        if (mysqli_num_rows($check) > 0) {
+            echo "Data tidak dapat dihapus karena masih digunakan dalam penilaian.";
+            return 0;
+        }
+    }
+
+    $query = "DELETE FROM `$table` WHERE `$tableid` = $id";
     mysqli_query($koneksi, $query);
 
     return mysqli_affected_rows($koneksi);

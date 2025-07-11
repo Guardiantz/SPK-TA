@@ -1,13 +1,13 @@
 <?php
-require("../controller/Bobot.php");
+require("../controller/Penilaian.php");
 
 $halaman = 5;
-$hasil = count(Index("SELECT * FROM pembobotan"));
+$hasil = count(Index("SELECT * FROM penilaian"));
 $total = ceil($hasil / $halaman);
 $aktif = (isset($_GET["page"])) ? $_GET["page"] : 1;
 $awal = ($halaman * $aktif) - $halaman;
 
-$data = Index("SELECT * FROM pembobotan LIMIT $awal,$halaman");
+$data = Index("SELECT * FROM penilaian LIMIT $awal,$halaman");
 $banding1 = Index("SELECT * FROM alternatif");
 $banding2 = Index("SELECT * FROM kriteria");
 ?>

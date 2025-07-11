@@ -17,10 +17,10 @@ if (isset($_POST["add"])) {
             title: 'Berhasil',
             text: 'Data berhasil masuk kedalam database',
             showClass: {
-                popup: 'animate__animated animate__fadeInDown'
+                popup: 'animate_animated animate_fadeInDown'
             },
             hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
+                popup: 'animate_animated animate_fadeOutUp'
             }
         }).then(function() {
             window.location.href = 'index.php?halaman=dataalternatif';
@@ -33,10 +33,10 @@ if (isset($_POST["add"])) {
             title: 'Gagal',
             text: 'Data gagal masuk kedalam database',
             showClass: {
-                popup: 'animate__animated animate__fadeInDown'
+                popup: 'animate_animated animate_fadeInDown'
             },
             hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
+                popup: 'animate_animated animate_fadeOutUp'
             }
         }).then(function() {
             window.location.href = 'index.php?halaman=dataalternatif';
@@ -54,7 +54,7 @@ if (isset($_POST["add"])) {
                         <div class="card-header">
                             <p class="card-header-title">Form Ubah Data Alternatif</p>
                             <div class="buttons card-header-icon">
-                                <a class="button is-link" href="index.php?halaman=datales">
+                                <a class="button is-link" href="index.php?halaman=dataalternatif">
                                     <ion-icon name="arrow-back-circle" class="mr-2"></ion-icon>Kembali
                                 </a>
                             </div>
@@ -65,7 +65,7 @@ if (isset($_POST["add"])) {
                                     <label class="label">Kode Alternatif</label>
                                     <div class="control has-icons-left">
                                         <input type="hidden" value="<?= $row["id_guru"]; ?>" name="id_guru">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="kode_alternatif" value="<?= $row["kode_alternatif"] ?>">
+                                        <input class="input" type="text" placeholder="Kode Alternatif" name="kode_alternatif" value="<?= $row["kode_alternatif"] ?>" readonly>
                                         <span class="icon is-small is-left">
                                             <ion-icon name="qr-code"></ion-icon>
                                         </span>
@@ -74,7 +74,7 @@ if (isset($_POST["add"])) {
                                 <div class="field">
                                     <label class="label">Nama Alternatif</label>
                                     <div class="control has-icons-left">
-                                        <input class="input" type="text" placeholder="Nama Tempat Les" name="nm_guru" value="<?= $row["nm_guru"]; ?>">
+                                        <input class="input" type="text" placeholder="Nama Alternatif" name="nm_guru" value="<?= $row["nm_guru"]; ?>">
                                         <span class="icon is-small is-left">
                                             <ion-icon name="home"></ion-icon>
                                         </span>

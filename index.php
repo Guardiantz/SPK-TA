@@ -3,9 +3,12 @@ require("controller/Login.php");
 
 session_start();
 
-if (isset($_SESSION['login'])) {
-    header("Location: page/index.php");
-    exit;
+if (isset($_POST['login'])) {
+    $login = Login($_POST);
+    if ($login === true) {
+        header("Location: page/index.php");
+        exit;
+    }
 }
 
 if (isset($_POST['login'])) {
